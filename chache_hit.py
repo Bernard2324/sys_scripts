@@ -4,7 +4,7 @@
 Code written by Maurice Green
 Formula for cache hit ratio = Cache Hits/(cache Hits+Missed Hits)
 You can modify this script, but leave my name as author
-License on Github
+License GPLv3
 '''
 import os, sys, re
 import subprocess
@@ -25,12 +25,12 @@ def get_process():
 	agents = []
 	config = RawConfigParser()
 	try:
-		config.read('/gdnt/inspector/etc/agent.ini')
+		config.read('/path/to/file.ini')
 	except:
 		pass
 	for ag in config.sections():
 		if ag[:1].isdigit():
-			if ag.endswith('_ctpret'):
+			if ag.endswith('_ignore_string'):
 				continue
 			new_agent = re.sub(r'\d+-', "", ag)
 			agents.append(new_agent)
