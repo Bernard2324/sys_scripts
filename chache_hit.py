@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
 '''
-Code written by Maurice Green
-Formula for cache hit ratio = Cache Hits/(cache Hits+Missed Hits)
-You can modify this script, but leave my name as author
 License GPLv3
 '''
 import os, sys, re
