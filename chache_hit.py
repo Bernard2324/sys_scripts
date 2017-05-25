@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 '''
+Author: Maurice Green JR
 License GPLv3
 '''
 import os, sys, re
