@@ -26,6 +26,8 @@ def get_process():
 		config.read('/path/to/file.ini')
 	except:
 		pass
+	# As an alternative, you can use the list comprehension below for more consise code.
+	# agents = [re.sub(r'\d+-', "", ag) for ag in config.sections() if ag[:1].isdigit() and not ag.endswith('_ignore_string')]
 	for ag in config.sections():
 		if ag[:1].isdigit():
 			if ag.endswith('_ignore_string'):
