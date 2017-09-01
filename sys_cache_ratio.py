@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+'''
+Author: Maurice Green
+Purpose: System Cache Hit Ratio
+'''
 import sys, os, re
 import threading
 
