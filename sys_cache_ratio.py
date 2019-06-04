@@ -34,11 +34,18 @@ class Proc(threading.Thread):
 
 proc = Proc()
 
-def get_pids():
+def getPids():
     pids = [inode for inode in os.listdir('/proc') if inode.isdigit()]
-    return map(get_hits, pids)
+    return map(getHits, pids)
 
-def get_hits(pid):
+def printTable(pc, cchr, mr):
+    print("{}".format("=" * 100))
+    print("Process: {}\n".format(pc))
+    print("Cache Hit Ratio:	%.2f%%" % float(cchr))
+    print("Miss Hit Ratio:	%.2f%%" % float(mr))
+    print("{}".format("=" * 100))
+
+def getHits(pid):
     byte_access = dict()
     io_file = proc.paths(pid, 'io')
     pc_name = proc.name(proc.paths(pid,'comm'))
@@ -55,15 +62,10 @@ def get_hits(pid):
         try:
             miss_ratio = (float(miss_ratio_n)/float(miss_ratio_d))
             cache_hit_ratio = float(100 - miss_ratio)
-		
-            print("=" * 100)
-            print("Process: {}\n".format(pc_name))
-            print("")
-            print("Cache Hit Ratio: %.2f%%" % float(cache_hit_ratio))
-            print("Miss Hit Ratio: %.2f%%" % float(miss_ratio))
-            print("=" * 100)
+	    
+	    printTable(pc_name, cache_hit_ratio, miss_ratio)
         except ZeroDivisionError:
             pass
 
 if __name__ == "__main__":
-    get_pids()
+    getPids()
